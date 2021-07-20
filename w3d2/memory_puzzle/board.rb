@@ -1,8 +1,10 @@
+require_relative 'card.rb'
+
 class Board
     CARDS = ['K', 'Q', 'J', 'A', '10', '9', '8', '7']
 
     def self.get_random
-        a, b = rand(3), rand(3)
+        a, b = rand(4), rand(4)
         [a, b]
     end
 
@@ -23,18 +25,22 @@ class Board
     def populate
         CARDS.each do |card|
             2.times do
-                random = @board.get_random
+                random = Board.get_random
                 while !self.empty?(random)
-                    random = @board.get_random
+                    random = Board.get_random
                 end
-                self[random] = card
+                self[random] = Card.new(card)
             end
         end
     end
 
-    
+    def render
+        @board.each do |row|
+            puts row.join(' ')
+        end
+    end
 
     def empty?(pos)
-        @board[pos] == nil
+        self[pos] == nil
     end
 end
