@@ -52,4 +52,18 @@ class Board
     def empty?(pos)
         self[pos] == nil
     end
+
+    def won?
+        @board.all? do |row|
+            row.all? { |card| card.revealed == true }
+        end
+    end
+
+    def reveal(guessed_pos)
+        card = self[guessed_pos]
+        if !card.revealed
+            card.reveal
+            card.hidden_card
+        end
+    end
 end
