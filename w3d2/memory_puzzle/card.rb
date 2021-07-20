@@ -16,6 +16,7 @@ class Card
   end
 
   def ==(other_card)
+    return false if other_card == nil
     @hidden_card == other_card.hidden_card
   end
 end

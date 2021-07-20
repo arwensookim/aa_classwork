@@ -1,4 +1,5 @@
 require_relative 'card.rb'
+require 'byebug'
 
 class Board
     CARDS = ['K', 'Q', 'J', 'A', '10', '9', '8', '7']
@@ -36,7 +37,15 @@ class Board
 
     def render
         @board.each do |row|
-            puts row.join(' ')
+            row.each do |ele|
+                card = ele
+                if card.revealed
+                    print card.hidden_card
+                else
+                    print ('_')
+                end
+            end
+            puts " "
         end
     end
 
