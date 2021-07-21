@@ -7,7 +7,7 @@ class Game
     end
 
     def play
-        game_over = false
+        @board.render_hidden
         while !@board.won?
             cards = []
             2.times do 
@@ -15,13 +15,20 @@ class Game
                 pos = gets.chomp.split(" ").map(&:to_i)
                 while @board[pos].revealed
                     print "Oops! try again : "
-                    pos = gets.chomp.split(" ").map(&:to_i)
+                    pos = gets.chomp.split.map(&:to_i)
                 end
-                @board.reveal(@board[pos])
+                @board.reveal(pos)
                 cards.push(@board[pos])
+                @board.render
+                puts ''
             end
-
+            if cards[0] != cards[1]
+                cards[0].hide
+                cards[1].hide
+            end
+            cards = []
+            @board.render
         end
+        puts 'Game over! You won!!'
     end
-
 end

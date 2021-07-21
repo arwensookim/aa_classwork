@@ -2,7 +2,7 @@ require_relative 'card.rb'
 require 'byebug'
 
 class Board
-    CARDS = ['K', 'Q', 'J', 'A', '10', '9', '8', '7']
+    CARDS = ['K', 'Q', 'J', 'A', '1', '9', '8', '7']
 
     def self.get_random
         a, b = rand(4), rand(4)
@@ -41,10 +41,19 @@ class Board
             row.each do |ele|
                 card = ele
                 if card.revealed
-                    print card.hidden_card
+                    print card.hidden_card + ' '
                 else
-                    print ('_')
+                    print ('_') + ' '
                 end
+            end
+            puts ' '
+        end
+    end
+
+    def render_hidden
+        @board.each do |row|
+            row.each do |ele|
+                print ele.hidden_card
             end
             puts " "
         end
