@@ -164,20 +164,6 @@ end
 #  takes two numbers and returns an array where the
 #   smaller element is first and the larger element is second
 
-# def merge (left, right)
-#     merged_array = []
-
-#     until left.empty? || right.empty?
-#         if left.first < right.first
-#             merged_array << left.shift
-#         else
-#             merged_array << right.shift
-#         end
-
-#     end
-
-#    merged_array + left + right
-# end
 
 def merge_sort(array)
     p array
