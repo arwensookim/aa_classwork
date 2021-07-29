@@ -1,4 +1,14 @@
-require_relative
+require_relative 'pieces/bishop.rb'
+require_relative 'pieces/king.rb'
+require_relative 'pieces/knight.rb'
+require_relative 'pieces/pawn.rb'
+require_relative 'pieces/rook.rb'
+require_relative 'pieces/queen.rb'
+require_relative 'pieces/null_piece.rb'
+require_relative 'slidable.rb'
+require_relative 'stepable.rb'
+
+
 
 class Board
     def initialize
@@ -8,12 +18,12 @@ class Board
 
     def[](pos)
         rank, file = pos
-        @chessboard[row][col]
+        @chessboard[rank][file]
     end
 
     def []=(pos, piece)
         rank, file = pos
-        @chessboard[row][col] = piece
+        @chessboard[rank][file] = piece
     end
 
     def valid_pos?(pos)
@@ -30,10 +40,10 @@ class Board
         self[pos] = piece
     end
 
-    def move_piece(color, start_pos, end_pos)
+    def move_piece(start_pos, end_pos)
         piece = self[start_pos]
-
-        if piece.color
+        self[end_pos] = piece if valid_pos?(end_pos)
+        self[start_pos] = @null_piece
     end
 
 end
