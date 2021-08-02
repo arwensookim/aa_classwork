@@ -1,1 +1,6 @@
 .DS_Store
+/.idea
+.idea/
+.idea/*
+*/.idea
+/W3/aa-practice-test-generator-master/
