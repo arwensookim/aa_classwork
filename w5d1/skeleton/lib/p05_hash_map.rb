@@ -20,7 +20,12 @@ class HashMap
   def delete(key)
   end
 
-  def each
+  def each(&prc)
+    @store.each do |bucket|
+      bucket.each do |ele|
+        prc.call(ele)
+      end
+    end
   end
 
   # uncomment when you have Enumerable included
