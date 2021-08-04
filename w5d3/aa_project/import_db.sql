@@ -45,8 +45,8 @@ CREATE TABLE question_follows (
 INSERT INTO
     question_follows(user_id, question_id)
 VALUES
-    ((SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), (SELECT id FROM questions WHERE title = 'Arwen''s Question'))
-    ((SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), (SELECT id FROM questions WHERE title = 'Alex''s Question'))
+    ((SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), (SELECT id FROM questions WHERE title = 'Arwen''s Question')),
+    ((SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), (SELECT id FROM questions WHERE title = 'Alex''s Question'));
 
 CREATE TABLE replies (
     id INTEGER PRIMARY KEY,
@@ -63,8 +63,8 @@ CREATE TABLE replies (
 INSERT INTO
     replies(question_id, parent_reply_id, user_id, body)
 VALUES
-    ((SELECT id FROM questions WHERE title = 'Arwen''s Question'), null, (SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), 'Body_text')
-    ((SELECT id FROM questions WHERE title = 'Alex''s Question'), null, (SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), 'Of course')
+    ((SELECT id FROM questions WHERE title = 'Arwen''s Question'), null, (SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), 'Body_text'),
+    ((SELECT id FROM questions WHERE title = 'Alex''s Question'), null, (SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), 'Of course');
 
 CREATE TABLE question_likes (
     id INTEGER PRIMARY KEY,
@@ -78,7 +78,7 @@ CREATE TABLE question_likes (
 INSERT INTO
     question_likes(user_id, question_id)
 VALUES
-    ((SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), (SELECT id FROM questions WHERE title = 'Arwen''s Question'))
-    ((SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), (SELECT id FROM questions WHERE title = 'Alex''s Question'))
+    ((SELECT id FROM users WHERE fname = 'Arwen' AND lname = 'Kim'), (SELECT id FROM questions WHERE title = 'Arwen''s Question')),
+    ((SELECT id FROM users WHERE fname = 'Alex' AND lname = 'Crooks'), (SELECT id FROM questions WHERE title = 'Alex''s Question'));
 
 
