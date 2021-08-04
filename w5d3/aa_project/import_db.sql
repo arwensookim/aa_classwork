@@ -38,14 +38,14 @@ CREATE TABLE replies (
     body TEXT NOT NULL,
 
     FOREIGN KEY(user_id) REFERENCES users(id),
-    FOREIGN KEY(question_id) REFERENCES questions(id)
+    FOREIGN KEY(question_id) REFERENCES questions(id),
     FOREIGN KEY(parent_reply_id) REFERENCES replies(id)
 );
 
 CREATE TABLE question_likes (
-    id INTEGER PRIMARY KEY
+    id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    question_id INTEGER NOT NULL
+    question_id INTEGER NOT NULL,
 
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(question_id) REFERENCES questions(id)
