@@ -40,6 +40,17 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        @user = User.find_by(id: params[:id])
+        unless @user 
+            return render json: "There is no user with that id", status: 404
+        end
+
+        if @user 
+            @user.destroy  
+            redirect_to users_url
+        else 
+            render json @user.errors.full_message
+        end
     end
 
     private
