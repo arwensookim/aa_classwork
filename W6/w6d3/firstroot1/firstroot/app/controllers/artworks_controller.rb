@@ -1,7 +1,9 @@
 class ArtworksController < ApplicationController
     def index
-        @artworks = Artwork.all
-        render json: @artworks
+        @user = User.find_by(id: params[:id])
+        return render json: "There is no user with that id", status: 404 if !@user 
+        @user = @user.artworks + @user.shared_artworks
+        render json: @user
     end
 
     def show

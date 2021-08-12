@@ -25,4 +25,5 @@ class User < ApplicationRecord
         through: :shares,
         source: :artwork
 
+
 end

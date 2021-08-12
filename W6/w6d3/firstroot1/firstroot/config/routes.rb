@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   patch 'users/:id', to: 'users#update'
   delete 'users/:id', to: 'users#destroy'
 
-  resources :artworks, except: [:new, :edit]
+  #Get user artworks and artworks shared to them
+  get 'users/:id/artworks', to: 'artworks#index'
 
+  resources :artworks, except: [:new, :edit, :index]
   resources :artwork_shares, except: [:new, :edit]
 end
