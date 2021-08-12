@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :artworks, except: [:new, :edit, :index]
   resources :artwork_shares, except: [:new, :edit]
+
+  resources :comments, only: [:create, :destroy, :index]
 end
