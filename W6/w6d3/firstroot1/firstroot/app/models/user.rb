@@ -31,4 +31,19 @@ class User < ApplicationRecord
         dependent: :destroy,
         class_name: :Comment 
 
+    has_many :likes,
+        dependent: :destroy 
+
+
+    has_many :liked_comments,
+        through: :likes,
+        source: :likeable,
+        source_type: :Comment 
+
+    has_many :liked_artworks,
+        through: :likes,
+        source: :likeable,
+        source_type: :Artwork
+
+    
 end
