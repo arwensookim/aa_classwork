@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   delete 'users/:id', to: 'users#destroy'
 
   resources :artworks, except: [:new, :edit]
+
+  resources :artwork_shares, except: [:new, :edit]
 end
