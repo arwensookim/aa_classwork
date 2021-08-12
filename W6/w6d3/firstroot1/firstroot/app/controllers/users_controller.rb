@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
     def index
         @users = User.all
-        render json: @users
+
+        if user_params[:query]
+           query = user_params[:query].split(" ")
+           return render json: "Incorrect SQL syntax" if query.first.downcase != 'like' && query.first.downcase != 'similar'    
+            
+            (query[1].downcase == 'to')? to = ' TO': to = ''
+            
+            comparison_string = "username #{query.first.upcase}#{to} #{query.last}" 
+            render json: @users.where(comparison_string)
+        else  
+            render json: @users
+        end 
     end
 
     def show
@@ -55,6 +66,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username)
+        params.require(:user).permit(:username, :query)
     end
 end
