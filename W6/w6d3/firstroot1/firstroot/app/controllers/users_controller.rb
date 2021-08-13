@@ -69,6 +69,27 @@ class UsersController < ApplicationController
         end
     end
 
+    def show_favorite_artwork
+        @user = User.find_by(id: params[:id])
+        render json: @user.favorite_artworks
+
+    end
+
+    def update_favorite_artwork
+        @user = User.find_by(id: params[:id])
+        if Artwork.update({artwork_id: update_favorites[:artwork_id], 
+                        viewer_id: params[:id],
+                        favorite: update_favorites[:favorite]})
+        end
+        render json: @user.favorite_artworks
+    end
+
+    def show_favorite_artwork_shares
+        @user = User.find_by(id: params[:id])
+        render json: @user.favorite_artwork_shares
+    end
+
+
     private
     def user_params
         params.require(:user).permit(:username, :query)
@@ -76,5 +97,9 @@ class UsersController < ApplicationController
 
     def user_query
         params.permit(:username, :query)
+    end
+
+    def update_favorites
+        params.require(:user).permit(:artwork_id, :favorite) 
     end
 end

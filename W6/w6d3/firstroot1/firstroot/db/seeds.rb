@@ -22,3 +22,7 @@ Comment.create({user_id: 1, artwork_id: 2, body: "This is user 1's additional co
 
 Like.create({user_id: 1, likeable_type: :Comment, likeable_id:1})
 Like.create({user_id: 1, likeable_type: :Artwork, likeable_id:1})
+
+
+ArtworkShare.update({artwork_id: 2, viewer_id: 1, favorite: true})
+Artwork.create({title: 'Art3', image_url: '/hellooo', artist_id: '2', favorite: true})

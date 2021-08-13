@@ -11,10 +11,18 @@ Rails.application.routes.draw do
   delete 'users/:id', to: 'users#destroy'
 
   #Get user artworks and artworks shared to them
-  get 'users/:id/artworks', to: 'artworks#index'
+  get 'users/:id/artworks_index', to: 'artworks#index'
+  get 'users/:id/artworks', to: 'users#show_favorite_artwork'
+  patch 'users/:id/artworks', to: 'users#update_favorite_artwork'
+
+  get 'users/:id/artwork_shares', to: 'users#show_favorite_artwork_shares'
+  patch 'users/:id/artwork_shares', to: 'users#update_favorite_artwork_shares'
+
 
   resources :artworks, except: [:new, :edit, :index]
   resources :artwork_shares, except: [:new, :edit]
 
   resources :comments, only: [:create, :destroy, :index]
+
+
 end

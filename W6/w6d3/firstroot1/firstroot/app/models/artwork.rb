@@ -11,6 +11,7 @@
 #
 class Artwork < ApplicationRecord
     validates :title, uniqueness: { scope: :artist_id}
+    validates :favorite, inclusion: { in: [ true, false ] }
 
     belongs_to :artist, 
         foreign_key: :artist_id,
