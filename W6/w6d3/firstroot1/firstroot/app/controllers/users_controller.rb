@@ -77,11 +77,24 @@ class UsersController < ApplicationController
 
     def update_favorite_artwork
         @user = User.find_by(id: params[:id])
-        if Artwork.update({artwork_id: update_favorites[:artwork_id], 
-                        viewer_id: params[:id],
-                        favorite: update_favorites[:favorite]})
-        end
+        @art = Artwork.find_by(id: update_favorites[:artwork_id])
+
+        return render json: "Not your Artwork" if @art.artist_id != @user.id 
+        
+        @art.update({favorite: update_favorites[:favorite]})
+        
         render json: @user.favorite_artworks
+    end
+
+    def update_favorite_artwork_shares
+        @user = User.find_by(id: params[:id])
+        @art = ArtworkShare.find_by(artwork_id: update_favorites[:artwork_id], viewer_id: params[:id])
+
+        return render json: "No such artwork" if !@art
+        
+        @art.update({favorite: update_favorites[:favorite]})
+        
+        render json: @user.favorite_artwork_shares
     end
 
     def show_favorite_artwork_shares
