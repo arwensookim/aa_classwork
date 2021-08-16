@@ -45,8 +45,6 @@ class User < ApplicationRecord
         source: :likeable,
         source_type: :Artwork
     
-
-
     def favorite_artwork_shares
         shared_artworks.where('artwork_shares.favorite = true')
     end
