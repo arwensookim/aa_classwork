@@ -1,0 +1,11 @@
+<form action="<%=cats_url(@cat)%>"method="POST">
+    <input type="hidden" name="_method" value= "PATCH"> 
+
+    <label>Name 
+        <input type="text" name="cat[name]" value = "<%=@cat.name%>">
+    </label>
+
+    <label>Birth Date
+    </label>
+
+</form>

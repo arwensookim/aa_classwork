@@ -1,0 +1,34 @@
+
+<!--<ul>
+        <li><%#= @cat.name %></li>
+        <li><%#= @cat.birth_date %></li>
+        <li><%#= @cat.color %></li>
+        <li><%#= @cat.sex %></li>
+        <%#if @cat.descrition %>
+            <li><%#= @cat.descrition %></li>
+        <%# end %>
+        <li>the rest of our
+            <a href="<%#=cats_url%>">Cats</a>
+        </li>
+</ul> -->
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Birth Date</th>
+        <th>Color</th>
+        <th>Sex</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td><%= @cat.name %></td>
+        <td><%= @cat.birth_date %></td>
+        <td><%= @cat.color %></td>
+        <td><%= @cat.sex %></td>
+        <td><%= @cat.descrition %></td>
+    </tr>
+</table>
+<p>the rest of our
+    <a href="<%=cats_url%>">Cats</a>
+</p>
