@@ -16,13 +16,16 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            login(@user)
+            log_in_user!(@user)
             redirect_to user_url(@user)
+            return
         else
-            flash.noew[:errors] = ['you missed something']
-            render :new
+            render json: 'you missed something'
+            # render :new
         end
     end
+
+
 
     private
     def user_params
