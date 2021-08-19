@@ -16,16 +16,26 @@
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;
 
+	
+
 	a {
 		margin: 0 5px;
 		text-transform: uppercase;
 		font-family: $sans-serif;
 		font-size: 10px;
 		color: $dark-gray;
+		
+	
+	}
+
+	a:hover {
+		font-weight: bold; 
+		text-decoration: underline; 
 	}
 
 	ul {
 		display: flex;
+		
 	}
 }
 
@@ -40,10 +50,12 @@
 	font-size: 11px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	align-items: center; 
 
 	li {
 		margin-left: 10px;
 		border-right: 1px solid $light-gray;
+		
 	}
 
 	button {
@@ -56,6 +68,11 @@
 
 	button:hover {
 		background-color: $lightest-gray;
+	}
+
+	a: hover {
+
+		
 	}
 
 	a,
