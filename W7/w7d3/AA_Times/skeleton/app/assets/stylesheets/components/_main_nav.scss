@@ -55,6 +55,13 @@
   }
 }
 
+.right-nav > ul > li > i:hover {
+  display: block;
+  cursor: pointer; 
+  
+
+}
+
 .left-nav > ul > li:hover,
 .right-nav > ul > li:last-of-type:hover {
 

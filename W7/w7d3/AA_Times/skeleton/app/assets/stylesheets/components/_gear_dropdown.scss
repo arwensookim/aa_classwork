@@ -1,1 +1,21 @@
 // Use the gear_dropdown.png screenshot as a style guide
+
+.gear-dropdown {
+    position: absolute; 
+    top: 50px;
+    right: 50px;
+    display: none;
+    width: 50px; 
+   
+    
+    ul > li {
+    position: relative; 
+    }
+    
+}
+
+.gear-dropdown: hover{
+    width: 30px; 
+
+
+}
