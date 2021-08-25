@@ -8,9 +8,13 @@ let print = function(el) {
 
 Array.prototype.myMap = function(callback) {
     let mapped = [];
-    for (let i = 0; i < this.length; ++i) {
-        mapped.push(callback(this[i]));
-    }
+    // for (let i = 0; i < this.length; ++i) {
+    //     mapped.push(callback(this[i]));
+    // }
+    this.myEach(el => mapped.push(callback(el)));
+    // this.myEach((el) => {
+    //     mappep.push(callback(el));
+    // });
     return mapped;
 }
 
