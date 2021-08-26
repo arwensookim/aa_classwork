@@ -63,22 +63,38 @@ const reader = readline.createInterface({
 
 function absurdBubbleSort(arr, sortCompletionCallback) {
     function outerBubbleSortLoop(madeAnySwaps) {
-
+        if (madeAnySwaps) {
+            innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop)
+        } else {
+            sortCompletionCallback(arr);
+        }
     }
+    outerBubbleSortLoop(true);
 }
 
 function askIfGreaterThan(ele1, ele2, callback) {
-    reader.question(`Is ${ele1} greater than ${ele2}?`, response => {
-        if (response === 'Yes') {
+    reader.question(`Is ${ele1} greater than ${ele2}? (Y/N): `, response => {
+        if (response === 'Y') {
             callback(true);
-        } else {
+        } else if (response === 'N') {
             callback(false);
         }
     })
 }
 
 function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
-
+    if (i < arr.length - 1) {
+        askIfGreaterThan(arr[i], arr[i + 1], function(isGreaterThan) {
+            if (isGreaterThan) {
+                [arr[i], arr[i+1]] = [arr[i+1], arr[i]];
+                madeAnySwaps = true;
+            }
+            innerBubbleSortLoop(arr, i+1, madeAnySwaps, outerBubbleSortLoop);
+            
+        });
+    } else if (i == (arr.length - 1)) {
+        outerBubbleSortLoop(madeAnySwaps);
+    }
 }
 
 absurdBubbleSort([3, 2, 1], function (arr) {
