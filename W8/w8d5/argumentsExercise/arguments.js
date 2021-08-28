@@ -39,13 +39,28 @@ class Cat {
 //       }
 //   }
 
-  Function.prototype.myBind = function(ctx, ...bindargs) { 
-    let that = this; 
-    return function () { 
-        return that.apply(ctx, bindargs); 
-    }
-  }
+  // Function.prototype.myBind = function(ctx, ...bindargs) { 
+  //   let that = this; 
+  //   return function () { 
+  //       return that.apply(ctx, bindargs); 
+  //   }
+  // }
 
+Function.prototype.myBind = function(ctx) {
+  const fn = this;
+  let bindArgs = Array.from(arguments).slice(1);
+  return function() {
+    let callArgs = Array.from(arguments);
+    return fn.apply(ctx, bindArgs.concat(callArgs))
+  }
+}
+
+Function.prototype.myBind = function(ctx, ...bindArgs) {
+  const fn = this;
+  return function(...callArgs) {
+    return fn.apply(ctx, ...bindArgs, ...callArgs);
+  }
+}
 
 
 
