@@ -2,7 +2,7 @@
 def range(start, max)
     return [] if max < start + 1
     range(start, max-1) + [max - 1]
-end 
+end
 
 
 def iterative_sum(arr)
@@ -51,7 +51,7 @@ end
 #We want too create a a copy of the array and all sub arrays
 #but we want those arrays to have different object ids (to be seprate)
 
-# 
+#
 # arr 1 = [1, [2], [3, [4]]]
 #arr 2 = arr 1.dup
 #arr 2 << 5
@@ -64,13 +64,13 @@ end
 #immutable object, then it adds it to a new array.
 #But if it is an array, it makes a copy of that array and iterates through
 #the original. When it reaches an immutable object in that array, it adds
-#it to the copy. When it reaches the end of the array it returns the last 
+#it to the copy. When it reaches the end of the array it returns the last
 #element
 
 # base case: we've reached something that is not an array
     #so we return it to be added to our final array
 
-#recursive step: if the element is an array and its length is one 
+#recursive step: if the element is an array and its length is one
 
 #[2] => 2
 #[[2]] => [2] => 2 => [2] => [[2]]
@@ -100,9 +100,9 @@ def fib(n)
     return [] if n == 0
     return [0] if n == 1
     return [0,1] if n == 2
-    
+
     fibs = fib(n-1)
-    fibs << fib(n-1)[-1] + fib(n-1)[-2] 
+    fibs << fib(n-1)[-1] + fib(n-1)[-2]
 end
 
 
@@ -132,7 +132,7 @@ def bsearch(arr, target)
     high_arr = arr[mid_i+1..-1]
 
     if arr[mid_i] > target
-        bsearch(low_arr, target) 
+        bsearch(low_arr, target)
     elsif bsearch(high_arr, target) != nil
        low_arr.length + 1 + bsearch(high_arr, target)
     end
@@ -150,7 +150,7 @@ end
 #Merge Sort
 
 #base Case
-#if the the current element has an array length of 2 
+#if the the current element has an array length of 2
 #we use merge the arr[0] and arr[1]
 
 #if the current element has an array length of 1, return arr[0]
@@ -166,12 +166,12 @@ end
 
 
 def merge_sort(array)
-    p array
+    # p array
     return array if array.length < 2
 
     mid_i = array.length / 2
-    left_arr = array[0...mid_i]  
-    right_arr = array[mid_i..-1]   
+    left_arr = array[0...mid_i]
+    right_arr = array[mid_i..-1]
 
     sorted_left = merge_sort(left_arr)
     sorted_right = merge_sort(right_arr)
@@ -181,8 +181,8 @@ def merge_sort(array)
 end
 
 def merge (left, right)
-    merged_array = [] 
-    
+    merged_array = []
+
     until left.empty? || right.empty?
         if left.first < right.first
             merged_array << left.shift
@@ -204,7 +204,7 @@ end
 
 
 def subsets(arr)
-    return [[]] if arr == [] 
+    return [[]] if arr == []
 
     new_arr = []
     last = arr[-1]
@@ -213,7 +213,7 @@ def subsets(arr)
     subset.each do |suba|
         new_arr << suba + [last]
     end
-    
+
     subset + new_arr
 
 end
@@ -223,15 +223,15 @@ end
 #p([1]) => [1]
 #p([1,2]) => [[1,2], [2,1]]
 #p([1,2,3]) => [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
-# 
-# Permutations iterates through the array takes the first element and 
-# return a combination of it with the other elements 
+#
+# Permutations iterates through the array takes the first element and
+# return a combination of it with the other elements
 
 # take and hold the first element
-# take the rest of the elements 
+# take the rest of the elements
 # Combine the first and the rest and add it to an array
 # rotate the rest
-# Combine them and add them 
+# Combine them and add them
 
 # take out the element at index loop number - 1
 # move that number to the front of the original array
@@ -240,6 +240,3 @@ end
 #var = arr[0]
 #rest = arr[1..-1]
 #rest.rotate
-
-
-
