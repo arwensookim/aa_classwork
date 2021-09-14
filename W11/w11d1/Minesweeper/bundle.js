@@ -215,14 +215,53 @@ var Tile = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Tile);
 
   function Tile(props) {
+    var _this;
+
     _classCallCheck(this, Tile);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Tile, [{
+    key: "handleClick",
+    value: function handleClick(event) {
+      var tile = this.props.tile;
+      var flagged = event.altKey ? true : false;
+      this.props.updateGame(tile, flagged);
+    }
+  }, {
     key: "render",
-    value: function render() {}
+    value: function render() {
+      var tile = this.props.tile;
+      var text;
+      var klass;
+
+      if (tile.explored) {
+        if (tile.bombed) {
+          text = "\u2622";
+          klass = 'bombed';
+        } else {
+          count = tile.adjacentBombCount();
+          text = count > 0 ? "".concat(count) : '';
+          klass = 'explored';
+        }
+
+        ;
+      } else if (tile.flagged) {
+        klass = 'flagged';
+        text = "\u2691";
+      } else {
+        klass = 'unexplored';
+      }
+
+      ;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        onclick: this.handleClick,
+        className: klass
+      }, text);
+    }
   }]);
 
   return Tile;
