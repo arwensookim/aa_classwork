@@ -14,6 +14,7 @@ import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from "../actions/todo_action
 //     done: true,
 //   }
 // };
+
 const todoReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   const newState = Object.assign({}, oldState);
