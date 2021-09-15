@@ -19,20 +19,20 @@ const todoReducer = (oldState = {}, action) => {
   const newState = Object.assign({}, oldState);
   switch (action.type) {
     case RECEIVE_TODOS:
-      const nextState = {}
+      // const nextState = {}
       action.todos.forEach( todo => {
-        nextState[todo.id] = todo
+        newState[todo.id] = todo
       });
-      return nextState;
+      return newState;
   
     case RECEIVE_TODO:
       newState[action.todo.id] = action.todo
       return newState;
 
     case REMOVE_TODO:
-      nextState = Object.assign({}, oldState);
-      delete nextState[action.todo.id];
-      return nextState;
+      // nextState = Object.assign({}, oldState);
+      delete newState[action.todo.id];
+      return newState;
 
     default:
       return oldState;
