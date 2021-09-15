@@ -12,25 +12,25 @@ import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from "../actions/todo_action
 //     title: "wash dog",
 //     body: "with shampoo",
 //     done: true,
-//   },
+//   }
 // };
 const todoReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   const newState = Object.assign({}, oldState);
   switch (action.type) {
     case RECEIVE_TODOS:
-      // const nextState = {}
+      const nextState = {}
       action.todos.forEach( todo => {
-        newState[todo.id] = todo
+        nextState[todo.id] = todo
       });
-      return newState;
+      return nextState;
   
     case RECEIVE_TODO:
       newState[action.todo.id] = action.todo
       return newState;
 
     case REMOVE_TODO:
-      // nextState = Object.assign({}, oldState);
+      // newState = Object.assign({}, oldState);
       delete newState[action.todo.id];
       return newState;
 
