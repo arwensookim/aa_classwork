@@ -17,7 +17,7 @@ import { RECEIVE_TODOS, RECEIVE_TODO, REMOVE_TODO } from "../actions/todo_action
 
 const todoReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  const newState = Object.assign({}, oldState);
+  const newState = Object.assign({},;
   switch (action.type) {
     case RECEIVE_TODOS:
       const nextState = {}
