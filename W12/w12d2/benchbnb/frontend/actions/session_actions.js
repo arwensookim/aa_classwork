@@ -5,7 +5,7 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 const receiveCurrentUser = currentUser => ({
-    type: RECEIVE_CURRENT_USER,
+    type: 'RECEIVE_CURRENT_USER',
     currentUser
 })
 
@@ -20,7 +20,10 @@ const receiveErrors = errors => ({
 
 export const signup = user => dispatch => (
     APIUtil.signup(user)
-    .then(user => dispatch(receiveCurrentUser(user)), 
+    .then(user => {
+        console.log(user)
+        return dispatch(receiveCurrentUser(user))
+    }, 
     err => dispatch(receiveErrors(err.responseJSON)))
     
 )
