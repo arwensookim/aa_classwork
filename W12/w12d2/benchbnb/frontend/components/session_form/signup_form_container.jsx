@@ -6,7 +6,7 @@ const mapStateToProps =({ errors }) => ({
     formType: 'signup'
 })
 
-const mapDispatchToProps = (dispatch, ownProps) =>  ({
+const mapDispatchToProps = (dispatch) =>  ({
     processForm: user => dispatch(signup(user))
 })
 
